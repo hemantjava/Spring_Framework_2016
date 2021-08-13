@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+<bean id="b" class="bytype.Book" autowire="byType">
+<property name="isbn" value="12121"></property>
+<property name="year" value="1200"></property>
+</bean>
+
+<bean id="author" class="bytype.Author">
+<property name="name" value="sonu"></property>
+<property name="address" value="chirmiri"></property>
+</bean>
+</beans>

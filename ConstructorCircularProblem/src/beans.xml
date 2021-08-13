@@ -1,0 +1,12 @@
+<!--  beans.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	   <bean id="id1" class="DemoBean">
+	   <constructor-arg ref="id2"/>
+	   </bean>
+	   <bean id="id2" class="DemoBean1">
+	   <constructor-arg ref="id1"/>
+	   </bean>
+	   </beans>

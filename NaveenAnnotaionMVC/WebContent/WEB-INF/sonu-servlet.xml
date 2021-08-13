@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+http://www.springframework.org/schema/context  
+http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<!-- DriverManagerDataSource bean configuration -->
+	<bean id="ds"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource" init-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	<context:property-placeholder location="classpath:resources/jdbc.properties" />
+	<!-- classpath: path is mandatory if properties file inside of resource folder -->
+	<bean id="lsfb"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="ds" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hbm2ddl.auto">create</prop>
+			</props>
+		</property>
+		<!-- 3. mappingResources -->
+		<property name="mappingResources">
+			<list>
+				<value>resources/student.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="ht" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<!-- <constructor-arg ref="lsfb" /> -->
+		<property name="sessionFactory" ref="lsfb"/>
+		</bean>
+		
+		<context:component-scan base-package="com.stu"/>
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>  

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<!-- DriverManagerDataSource bean configuration -->
+	<bean id="ds"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+	<bean id="lsfb"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- LocalSessionFactoryBean have three properties -->
+		<!-- 1. dataSource -->
+		<property name="dataSource" ref="ds"></property>
+		<!-- 2. hibernateProperties -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="dialect">org.hibernate.dialect.OracleDialect</prop>
+				<prop key="show_sql">true</prop>
+			</props>
+		</property>
+		<!-- 3. mappingResources -->
+		<property name="mappingResources">
+			<list>
+				<value>student.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="htemp" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="lsfb"></property>
+	</bean>
+	<bean id="crud" class="com.sonu.spring.dao.CurdDaoImpl">
+		<property name="ht" ref="htemp"></property>
+	</bean>
+
+	<bean id="db" class="com.sonu.spring.model.DemoBean">
+		<property name="curd" ref="crud"></property>
+	</bean>
+
+
+
+	<context:property-placeholder location="jdbc.properties" />
+</beans>

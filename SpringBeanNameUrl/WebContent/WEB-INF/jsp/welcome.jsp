@@ -1,0 +1,1 @@
+Message is: ${sonu} <a href="hello.html">click</a>

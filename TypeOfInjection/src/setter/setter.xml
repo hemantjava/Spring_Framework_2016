@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="b" class="setter.DemoBean">
+		<property name="sd" ref="s"></property>
+	</bean>
+	<bean id="s" class="setter.SimpleDemo" />
+	<bean id="so" class="setter.Sonu">
+		<property name="name">
+			<value>hemant sahu</value>
+		</property>
+	</bean>
+	<bean id="sos" class="setter.Sonu">
+		<!--  <property name="name">  //setter injection override constructor injection
+			<value>sonu sahu</value>
+		</property>  -->
+		<constructor-arg>
+		<value>soni</value>
+		</constructor-arg>
+	</bean>
+
+</beans>

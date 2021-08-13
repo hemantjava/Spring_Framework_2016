@@ -1,0 +1,11 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!--employee.hbm.xml -->
+<hibernate-mapping>
+<class name="com.sonu.spring.model.StudentDTO" table="students">
+<id name="sid" column="sid"/>
+<property name="sname" column="sname" />
+<property name="marks" column="marks" />
+</class>
+</hibernate-mapping>

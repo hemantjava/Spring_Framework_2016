@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	<bean id="b" class="AllCollection">
+		<property name="list">
+			<util:list list-class="java.util.LinkedList">
+				<value>hemant</value>
+				<value>naveen</value>
+				<value>hemant</value>
+				<value>dharam</value>
+			</util:list>
+		</property>
+		<property name="set">
+			<util:set set-class="java.util.TreeSet">
+				<value>hemant</value>
+				<value>naveen</value>
+				<value>hemant</value>
+				<value>dharam</value>
+			</util:set>
+		</property>
+		<property name="map">
+			<util:map map-class="java.util.TreeMap">
+				<entry key="1" value="hemant" />
+				<entry key="2" value="hemant" />
+				<entry key="4" value="nidhi" />
+				<entry key="3" value="shiva" />
+			</util:map>
+		</property>
+	</bean>
+	<bean id="c" class="AllCollection1">
+		<property name="list">
+			<util:list list-class="java.util.LinkedList">
+				<value>hemant</value>
+				<value>naveen</value>
+				<value>hemant</value>
+				<value>dharam</value>
+			</util:list>
+		</property>
+		<property name="set">
+			<util:set set-class="java.util.TreeSet">
+				<value>hemant</value>
+				<value>naveen</value>
+				<value>hemant</value>
+				<value>dharam</value>
+			</util:set>
+		</property>
+		<property name="map">
+			<util:map map-class="java.util.TreeMap">
+				<entry key="1" value="hemant" />
+				<entry key="2" value="hemant" />
+				<entry key="4" value="nidhi" />
+				<entry key="3" value="shiva" />
+			</util:map>
+		</property>
+	</bean>
+</beans>

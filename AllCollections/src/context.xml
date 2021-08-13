@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+<bean id="b" class="AllCollection">
+<property name="ls">
+<list>
+<value>hemant</value>
+<value>hemant</value>
+<value>sahu</value>
+<value>naveen</value>
+</list>
+</property>
+<property name="val">
+<list>
+<value>1</value>
+<value>2</value>
+<value>2</value>
+<value>5</value>
+</list>
+</property>
+<property name="st">
+<list>
+<value>hemant</value>
+<value>hemant</value>
+<value>sahu</value>
+<value>naveen</value>
+</list>
+</property>
+<property name="mp">
+<map>
+<entry key="k1" value="hemant"></entry>
+<entry key="k2" value="hemant"></entry>
+<entry key="k3" value="sonu"></entry>
+</map>
+</property>
+<property name="pt">
+<props>
+<prop key="k1">hemant</prop>
+<prop key="k3">sahu</prop>
+<prop key="k5">hemant</prop>
+</props>
+</property>
+</bean>
+</beans>

@@ -1,0 +1,13 @@
+<!--  beans.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	   <bean id="id1" class="over.DemoBean">
+	   <!-- Here setter injection override constructor injection -->
+	   <constructor-arg value="shilpa"></constructor-arg>
+	   <constructor-arg value='1234'></constructor-arg>
+	   <property name="name" value="sonu"></property>
+	   <property name="rno" value="1232123"></property>
+	   </bean>
+	   </beans>

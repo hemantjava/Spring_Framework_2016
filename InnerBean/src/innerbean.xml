@@ -1,0 +1,21 @@
+<!--  beans.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	  <!-- problem here create seperate object for demobean
+	  and multiple time configuration it choose pring.xml -->
+	   <bean id="id1" class="SampleBean">
+	   <property name="db">
+	   <!-- inner bean configuration -->
+	   <bean class="DemoBean"/>
+	   </property>
+	   </bean>
+	   <bean id="id2" class="ExampleBean">
+	   <property name="db">
+	   <!-- inner bean configuration -->
+	   <bean class="DemoBean"/>
+	   </property>
+	   </bean>
+	   
+	   </beans>

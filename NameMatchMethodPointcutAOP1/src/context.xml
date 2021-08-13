@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<!-- business class configuration -->
+	<bean id="greet" class="com.sonu.aop.model.GreetingImpl" />
+	<!-- Advice classes configuration -->
+	<bean id="exception" class="com.sonu.aop.aspect.ExcepcetionAdvice" />
+	<bean id="around" class="com.sonu.aop.aspect.TimerAountAdvice"/>
+	<bean id="bye" class="com.sonu.aop.aspect.GoodByeAdvice"/>
+	<bean id="helo" class="com.sonu.aop.aspect.WelcomeAdvice"/>
+	<!-- NameMatchMethodPointcut class configuration -->
+	<bean id="nmmp" class="org.springframework.aop.support.NameMatchMethodPointcut">
+	<!-- only select single method sayHelo -->
+		<property name="mappedName" value="sayHelo"/>
+	</bean>
+	<bean id="dpa" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+	<!-- choose appropriate method and advice need to be injected -->
+		<property name="pointcut" ref="nmmp" />
+		<property name="advice" ref="helo" />
+	</bean>
+	<!-- ProxyFactoryBean class configuration -->
+	<bean id="pfb" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="greet" />
+		<property name="proxyInterfaces" value="com.sonu.aop.model.Greetings" />
+		<property name="interceptorNames">
+			<list>
+			<!-- advisor id configuration if not available then advice id configuration is needed -->
+				<value>dpa</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>
